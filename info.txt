@@ -1,0 +1,6 @@
+name=UnityaAds v0.0.9 (byRobin)
+description=Implements UnityAds for iOS and Android.
+author=Robin Schaafsma
+website=http://www.byrobingames.com
+version=0.0.9
+compatibility=mobile

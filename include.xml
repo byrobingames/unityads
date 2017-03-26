@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project>
+    
+    <section if="android">
+        <classpath name="src" />
+        
+        <dependency name="unityads" path="dependencies/unityads" if="android" />
+        
+        <android extension="com.byrobin.unityads.UnityAdsEx" />
+    </section>
+
+	<section if="ios">
+        
+        <setenv name="UNITYADS_ENABLED" value="true" />
+        <set name="unityads" />
+        
+        <echo value='|----------------------------------------------------------------------------|' />
+        <echo value='| UnityAds: Enable byRobin Extension manager in "Setting->Extension"         |' />
+        <echo value='|----------------------------------------------------------------------------|' />
+        
+		<ndll name="unityads" />
+        
+        <dependency path="frameworks/UnityAds.framework"/>
+	</section>
+</project>
