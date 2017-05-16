@@ -1,21 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <palette>
     
-    <block tag="initUnityAds" spec="Initialize UnityAds with 'gameID': %0 in %1 with %2 [c:unityads]" code="UnityAds.init(~,~,~);" type="action" color="charcoal" returns="void">
+    <block tag="initUnityAds" spec="Initialize UnityAds [c:unityads]" code="UnityAds.init();" type="action" color="charcoal" returns="void">
         <fields>
-            <text order="0"></text>
-            <dropdown order="1">
-                <choices>
-                    <c text="Test Mode" code="true"></c>
-                    <c text="Release Mode" code="false"></c>
-                </choices>
-            </dropdown>
-            <dropdown order="2">
-                <choices>
-                    <c text="Debug Mode On" code="true"></c>
-                    <c text="Debug Mode Off" code="false"></c>
-                </choices>
-            </dropdown>
         </fields>
     </block>
     
@@ -38,22 +25,6 @@
             <text order="0"></text>
         </fields>
     </block>
-    
-    <!--<block tag="unityAdsIsSupported" spec="UnityAds is Supported on Device [c:unityads]" code="UnityAds.isSupported()" type="normal" color="charcoal" returns="boolean">
-        <fields>
-        </fields>
-    </block>-->
-    
-    <!--<block tag="getAdInfoUnityAds" spec="UnityAds Ads %0 [c:unityads]" code="UnityAds.~()" type="normal" color="charcoal" returns="boolean">
-        <fields>
-            <dropdown order="0">
-                <choices>
-                    <c text="are available " code="adIsFetch"></c>
-                    <c text="are not available" code="adFailedToFetch"></c>
-                </choices>
-            </dropdown>
-        </fields>
-    </block>-->
     
     <block tag="getVideoAdInfoUnityAds" spec="UnityAds Video Ad %0 [c:unityads]" code="UnityAds.~()" type="normal" color="charcoal" returns="boolean">
         <fields>

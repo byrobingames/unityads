@@ -16,6 +16,8 @@ import com.stencyl.Engine;
 import com.stencyl.Input;
 import openfl.events.MouseEvent;
 
+import scripts.ByRobinAssets;
+
 class UnityAds {
 	
 	private static var initialized:Bool=false;
@@ -44,8 +46,17 @@ class UnityAds {
 
 	////////////////////////////////////////////////////////////////////////////
 	
-	public static function init(appId:String, testMode:Bool = false, debugMode:Bool = false){
+	public static function init(){
 	
+		#if ios
+		var appId:String = ByRobinAssets.UAIosGameID;
+		#elseif android
+		var appId:String = ByRobinAssets.UAAndroidGameID;
+		#end
+		var testMode:Bool = ByRobinAssets.UATestAds;
+		var debugMode:Bool = ByRobinAssets.UADebugMode;
+		
+		
 		#if ios
 		if(initialized) return;
 		initialized = true;
