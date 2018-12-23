@@ -25,42 +25,42 @@ Go to: [https://byrobingames.github.io](https://byrobingames.github.io)
 
 ## Documentation and Block Examples
 
-Step 1: If you don’t have an account, create one on [http://unityads.unity3d.com](http://unityads.unity3d.com)
+**Step 1**: If you don’t have an account, create one on [http://unityads.unity3d.com](http://unityads.unity3d.com)
 
-Step 2: Create an project and add your platfom (iOS/Andoid)
+**Step 2:** Create an project and add your platfom (iOS/Andoid)
 
-Step 3: Open Project and get your Game id of the Platform you work with.
+**Step 3:** Open Project and get your Game id of the Platform you work with.
 ![unityadspoject](https://byrobingames.github.io/img/unityads/unityadspoject.png)
 
 Fill your Game id in the Toolset Manager<br/>
 ![unityadsgameid](https://byrobingames.github.io/img/unityads/unityadsgameid.png)
 
-Step 4: Use the initialize UniAds block in when created event of your first (loading)scene.<br/>
+**Step 4:** Use the initialize UniAds block in when created event of your first (loading)scene.<br/>
 ![initializeUnityAds](https://byrobingames.github.io/img/unityads/unityadsinitialize.png)
 
 If your game is not live yet, enable Testads in the Toolset Manager, don’t forget to disable Testads when your uploading your game to the store.<br/>
 ![unityadstestmode](https://byrobingames.github.io/img/unityads/unityadstestmode.png)
 
-Step 5: Open the Platform you work with (iOS or Android) and get your <strong>Integration Id</strong> of the placements your added.<br/>
+**Step 5:** Open the Platform you work with (iOS or Android) and get your <strong>Integration Id</strong> of the placements your added.<br/>
 In this example i use iOS platform:<br/>
 The Integration Id of Ad Placement Video is <strong>video</strong><br/>
 The Integration Id of Ad Placement Rewarded Video is <strong>rewardedVideo</strong>,<br/>
 <span style="color:red;">make sure you have enabled the Rewarded Video. </span>
 
-Step 6: Show Video with placement id (INTERGRATION ID).<br/>
+**Step 6:** Show Video with placement id (INTERGRATION ID).<br/>
 Show Unityads Video with placement id block,<br/>
 ![unityadsshowvideo](https://byrobingames.github.io/img/unityads/unityadsshowvideo.png)
 
-Step 7: Show Rewarded Video.
+**Step 7:** Show Rewarded Video.
 Show Unityads Rewarded Video with placement id block,<br/>
 Create and Alert title and Message that ask the player if he wants to watch the Rewarded Video or not. If Alert title is empty no Alert box will show.<br/>
 ![unityadsshowrewarded](https://byrobingames.github.io/img/unityads/unityadsshowrewarded.png)
 
-Step 8:Can Show Ads
+**Step 8:** Can Show Ads
 Check if ads with placement id can be show , it return true when it can show and false if ads cannot be show.<br/>
 ![unityadscanshow](https://byrobingames.github.io/img/unityads/unityadscanshow.png)
 
-Step 9:Callbacks<br/>
+**Step 9:** Callbacks<br/>
 ![unityadscallbacks](https://byrobingames.github.io/img/unityads/unityadscallbacks.png)<br/>
 Use the callback blocks in an Updated event in an if statement.<br/>
 – did show<br/>
