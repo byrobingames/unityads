@@ -33,7 +33,7 @@ Step 3: Open Project and get your Game id of the Platform you work with.
 ![unityadspoject](https://byrobingames.github.io/img/unityads/unityadspoject.png)
 
 Step 4: Use the initialize UniAds block in when created event of your first (loading)scene.<br/>
-![initializeUnityAds](https://byrobingames.github.io/img/unityads/initializeUnityAds.png)
+![initializeUnityAds](https://byrobingames.github.io/img/unityads/unityadsinitialize.png)
 
 If your game is not live yet, use it in Test Mode, don’t forget to set in in Release Mode when your uploading your game to the store.
 
