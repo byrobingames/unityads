@@ -32,10 +32,14 @@ Step 2: Create an project and add your platfom (iOS/Andoid)
 Step 3: Open Project and get your Game id of the Platform you work with.
 ![unityadspoject](https://byrobingames.github.io/img/unityads/unityadspoject.png)
 
+Fill your Game id in the Toolset Manager<br/>
+![unityadsgameid](https://byrobingames.github.io/img/unityads/unityadsgameid.png)
+
 Step 4: Use the initialize UniAds block in when created event of your first (loading)scene.<br/>
 ![initializeUnityAds](https://byrobingames.github.io/img/unityads/unityadsinitialize.png)
 
-If your game is not live yet, use it in Test Mode, don’t forget to set in in Release Mode when your uploading your game to the store.
+If your game is not live yet, enable Testads in the Toolset Manager, don’t forget to disable Testads when your uploading your game to the store.<br/>
+![unityadstestmode](https://byrobingames.github.io/img/unityads/unityadstestmode.png)
 
 Step 5: Open the Platform you work with (iOS or Android) and get your <strong>Integration Id</strong> of the placements your added.<br/>
 In this example i use iOS platform:<br/>
