@@ -25,7 +25,7 @@ Go to: [https://byrobingames.github.io](https://byrobingames.github.io)
 
 ## Documentation and Block Examples
 
-**Step 1**: If you don’t have an account, create one on [http://unityads.unity3d.com](http://unityads.unity3d.com)
+**Step 1**: If you don’t have an account, create one on [https://operate.dashboard.unity3d.com](https://operate.dashboard.unity3d.com)
 
 **Step 2:** Create an project and add your platfom (iOS/Andoid)
 
