@@ -12,8 +12,8 @@ This Extension Required the Toolset Extension Manager [https://byrobingames.gith
 
 ## Main Features
 
-  * Video Support.
-  * Rewarded Video Support.
+  * Video Support
+  * Rewarded Video Support
 
 ## How to Install
 
