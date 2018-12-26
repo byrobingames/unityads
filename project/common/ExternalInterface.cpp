@@ -50,6 +50,30 @@ static value unityads_issupported(){
     return alloc_bool(unityIsSupported());
 }
 DEFINE_PRIM(unityads_issupported,0);
+//banner
+static value unityads_banner_show(value banner_placementid){
+    showBanner(val_string(banner_placementid));
+    return alloc_null();
+}
+DEFINE_PRIM(unityads_banner_show,1);
+
+static value unityads_banner_hide(){
+    hideBanner();
+    return alloc_null();
+}
+DEFINE_PRIM(unityads_banner_hide,0);
+
+static value unityads_banner_move(value banner_position){
+    moveBanner(val_string(banner_position));
+    return alloc_null();
+}
+DEFINE_PRIM(unityads_banner_move,1);
+
+static value unityads_banner_destroy(){
+    destroyBanner();
+    return alloc_null();
+}
+DEFINE_PRIM(unityads_banner_destroy,0);
 
 #endif
 

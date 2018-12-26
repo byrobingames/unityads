@@ -1,7 +1,7 @@
 /*
  *
  * Created by Robin Schaafsma
- * www.byrobingames.com
+ * https:/\/byrobingames.github.io
  *
  */
 #include <hx/CFFI.h>
@@ -9,16 +9,21 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import <UnityAds/UnityAds.h>
+#import <UnityAds/UADSBanner.h>
 
 using namespace unityads;
 
 extern "C" void sendUnityAdsEvent(char* event);
 
-@interface UnityAdsController : NSObject <UnityAdsDelegate>
+@interface UnityAdsController : NSObject <UnityAdsDelegate, UnityAdsBannerDelegate>
 {
     UIViewController *viewController;
+    UIViewController *root;
+    UIView *bannerView;
     BOOL showedVideo;
     BOOL showedRewarded;
+    BOOL bottom;
+    BOOL bannerLoaded;
 }
 
 - (id)initWithID:(NSString*)appID testModeOn:(BOOL)testMode debugModeOn:(BOOL)debugMode;
@@ -26,9 +31,15 @@ extern "C" void sendUnityAdsEvent(char* event);
 - (void)showRewardedAdWithPlacementID:(NSString*)videoPlacementId andTitle:(NSString*)title withMsg:(NSString*)msg;
 - (BOOL)canShowUnityAds:(NSString*)placementId;
 - (BOOL)isSupportedUnityAds;
+- (void)showBannerAdWithPlacementID:(NSString*)bannerPlacentId;
+- (void)hideBannerAd;
+- (void)setBannerPosition:(NSString*)position;
+- (void)destroyBannerAd;
 
 @property (nonatomic, assign) BOOL showedVideo;
 @property (nonatomic, assign) BOOL showedRewarded;
+@property (nonatomic, assign) BOOL bottom;
+@property (nonatomic, assign) BOOL bannerLoaded;
 
 @end
 
@@ -36,6 +47,8 @@ extern "C" void sendUnityAdsEvent(char* event);
 
 @synthesize showedVideo;
 @synthesize showedRewarded;
+@synthesize bottom;
+@synthesize bannerLoaded;
 
 - (id)initWithID:(NSString*)ID testModeOn:(BOOL)testMode debugModeOn:(BOOL)debugMode
 {
@@ -44,7 +57,7 @@ extern "C" void sendUnityAdsEvent(char* event);
     if(!self) return nil;
     
     [UnityAds setDebugMode:debugMode];
-    
+    [UnityAdsBanner setDelegate:self];
     [UnityAds initialize:ID delegate:self testMode:testMode];
     
     return self;
@@ -136,12 +149,58 @@ extern "C" void sendUnityAdsEvent(char* event);
 
 - (BOOL)canShowUnityAds:(NSString*)placementId
 {
-    return [UnityAds isReady];
+    return [UnityAds isReady: placementId];
 }
 
 - (BOOL)isSupportedUnityAds
 {
     return [UnityAds isSupported];
+}
+
+-(void)showBannerAdWithPlacementID:(NSString*)bannerPlacentId
+{
+    if(bannerLoaded){
+        bannerView.hidden = false;
+        sendUnityAdsEvent("bannerdidshow");
+    }else{
+        [UnityAdsBanner loadBanner: bannerPlacentId];
+    }
+}
+
+-(void)hideBannerAd
+{
+    if(bannerLoaded){
+        bannerView.hidden = true;
+        sendUnityAdsEvent("bannerdidhide");
+    }
+}
+
+-(void)destroyBannerAd
+{
+    if(bannerLoaded){
+        [UnityAdsBanner destroy];//app crashes when calling destroy using hidden for now..
+    }
+}
+
+-(void)setBannerPosition:(NSString*)position
+{
+    if(!root) return;
+    if(!bannerLoaded) return;
+    
+    bottom=[position isEqualToString:@"BOTTOM"];
+    
+    if (bottom) // Reposition the adView to the bottom of the screen
+    {
+        CGRect frame = bannerView.frame;
+        frame.origin.y = root.view.bounds.size.height - frame.size.height;
+        bannerView.frame=frame;
+        
+    }else // Reposition the adView to the top of the screen
+    {
+        CGRect frame = bannerView.frame;
+        frame.origin.y = 0;
+        bannerView.frame=frame;
+    }
 }
 
 
@@ -203,6 +262,45 @@ extern "C" void sendUnityAdsEvent(char* event);
     }
 }
 
+#pragma mark - UnityAdsBanner Delegate
+
+-(void)unityAdsBannerDidClick:(NSString *)placementId {
+    sendUnityAdsEvent("bannerdidclick");
+}
+
+-(void)unityAdsBannerDidError:(NSString *)message {
+    NSLog(@"UnityAdsBannerDidError: %@", message);
+    bannerLoaded = NO;
+    sendUnityAdsEvent("bannerdiderror");
+}
+
+-(void)unityAdsBannerDidHide:(NSString *)placementId {
+     sendUnityAdsEvent("bannerdidhide");
+}
+
+-(void)unityAdsBannerDidLoad:(NSString *)placementId view:(UIView *)view {
+    
+    root = [[[UIApplication sharedApplication] keyWindow] rootViewController];
+    bannerView = view;
+    [root.view addSubview:bannerView];
+    
+    bannerView.hidden = false;
+    
+    bannerLoaded = YES;
+    
+    //sendUnityAdsEvent("bannerdidload");
+}
+
+-(void)unityAdsBannerDidShow:(NSString *)placementId {
+    sendUnityAdsEvent("bannerdidshow");
+}
+
+-(void)unityAdsBannerDidUnload:(NSString *)placementId {
+    bannerLoaded = NO;
+    bannerView.hidden = true;
+    bannerView = nil;
+}
+
 @end
 
 namespace unityads {
@@ -251,5 +349,29 @@ namespace unityads {
         if(unityAdsController == NULL) return false;
         
         return [unityAdsController isSupportedUnityAds];
+    }
+    
+    void showBanner(const char *__bannerPlacementId)
+    {
+        NSString *bannerPlacementId = [NSString stringWithUTF8String:__bannerPlacementId];
+        
+        if(unityAdsController != NULL) [unityAdsController showBannerAdWithPlacementID:bannerPlacementId];
+    }
+    
+    void hideBanner()
+    {
+        if(unityAdsController != NULL) [unityAdsController hideBannerAd];
+    }
+    
+    void moveBanner(const char *__position)
+    {
+        NSString *position = [NSString stringWithUTF8String:__position];
+        
+        if(unityAdsController != NULL) [unityAdsController setBannerPosition:position];
+    }
+    
+    void destroyBanner()
+    {
+        if(unityAdsController != NULL) [unityAdsController destroyBannerAd];
     }
 }

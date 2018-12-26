@@ -10,6 +10,10 @@ namespace unityads {
     void showRewarded(const char *__rewardPlacementId,const char *__title,const char *__msg);
     bool unityCanShow(const char *__placementId);
     bool unityIsSupported();
+    void showBanner(const char *__bannerPlacementId);
+    void hideBanner();
+    void moveBanner(const char *__position);
+    void destroyBanner();
 }
 
 

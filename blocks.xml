@@ -20,6 +20,28 @@
         </fields>
     </block>
     
+    <block tag="showBannerUnityAds" spec="Show UnityAds Banner ad with placementID: %0 [c:unityads]" code="UnityAds.showBanner(~);" help="Before you can show set Placement id" type="action" color="charcoal" returns="void">
+        <fields>
+            <text order="0"></text>
+        </fields>
+    </block>
+    
+    <block tag="hideBannerUnityAds" spec=" Hide UnityAds Banner ad [c:unityads]" code="UnityAds.hideBanner();" help="Hide or destroy banner" type="action" color="charcoal" returns="void">
+        <fields>
+        </fields>
+    </block>
+    
+    <block tag="moveBannerUnityAds" spec="Move UnityAds Banner ad to: %0 [c:unityads]" code="UnityAds.moveBanner(~);" help="Move banner to bottom or top" type="action" color="charcoal" returns="void">
+        <fields>
+            <dropdown order="0">
+                <choices>
+                    <c text="bottom" code="&quot;BOTTOM&quot;"></c>
+                    <c text="top" code="&quot;TOP&quot;"></c>
+                </choices>
+            </dropdown>
+        </fields>
+    </block>
+    
     <block tag="getAdInfoUnityAds" spec="UnityAds canShowAds with placementID: %0 [c:unityads]" code="UnityAds.canShowAds(~)" type="normal" color="charcoal" returns="boolean">
         <fields>
             <text order="0"></text>
@@ -44,6 +66,19 @@
                 <choices>
                     <c text="did show" code="rewardedAdDidShow"></c>
                     <c text="is completed" code="rewardedCompleted"></c>
+                </choices>
+            </dropdown>
+        </fields>
+    </block>
+    
+    <block tag="getBannerAdInfoUnityAds" spec="UnityAds Banner Ad %0 [c:unityads]" code="UnityAds.~()" type="normal" color="charcoal" returns="boolean">
+        <fields>
+            <dropdown order="0">
+                <choices>
+                    <c text="did show" code="bannerDidShow"></c>
+                    <c text="did hide" code="bannerDidHide"></c>
+                    <c text="did click" code="bannerDidClick"></c>
+                    <c text="did error" code="bannerDidError"></c>
                 </choices>
             </dropdown>
         </fields>
