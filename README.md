@@ -14,6 +14,7 @@ This Extension Required the Toolset Extension Manager [https://byrobingames.gith
 
   * Video Support
   * Rewarded Video Support
+  * Banner Support
 
 ## How to Install
 
@@ -47,7 +48,7 @@ The Integration Id of Ad Placement Video is <strong>video</strong><br/>
 The Integration Id of Ad Placement Rewarded Video is <strong>rewardedVideo</strong>,<br/>
 <span style="color:red;">make sure you have enabled the Rewarded Video. </span>
 
-**Step 6:** Show Video with placement id (INTERGRATION ID).<br/>
+**Step 6:** Show Video with placement id.<br/>
 Show Unityads Video with placement id block,<br/>
 ![unityadsshowvideo](https://byrobingames.github.io/img/unityads/unityadsshowvideo.png)
 
@@ -66,6 +67,29 @@ Use the callback blocks in an Updated event in an if statement.<br/>
 – did show<br/>
 – is completed<br/>
 – is skipped (Video only, Rewarded cannot be skipped)
+
+### Banner Support
+
+**Show Banner with PlacementId**<br/>
+![unityshowbanner](https://byrobingames.github.io/img/unityads/unityshowbanner.png)<br/>
+Show the banner, by defeault at the bottom.
+
+<hr/>
+
+**Hide Banner**<br/>
+![unityhidebanner](https://byrobingames.github.io/img/unityads/unityhidebanner.png)<br/>
+Hide the banner.
+
+<hr/>
+
+**Move Banner**<br/>
+![unitymovebanner](https://byrobingames.github.io/img/unityads/unitymovebanner.png)<br/>
+Move the banner to top or back to bottom.
+
+<hr/>
+
+**Banner Callbacks**<br/>
+![unitybannercallbacks](https://byrobingames.github.io/img/unityads/unitybannercallbacks.png)<br/>
 
 ### Button Example:
 
@@ -91,6 +115,7 @@ Rewarded ad:<br/>
 - 2016-11-18 (0.0.8) – Updated for use with Heyzap Extension 2.7
 - 2017-03-19 (0.0.9) – Updated to use with Heyzap Extension 2.9, Update SDK to iOS: 2.0.8 Android: 2.0.8, Added Android Gradle support for openfl4
 - 2017-05-16(0.1.0) Update SDK to iOS: 2.1.0 Android: 2.1.0, Tested for Stencyl 3.5, Required byRobin Toolset Extension Manager
+- 2018-12-26(0.1.1) Update SDK to iOS: 3.0.0 Android: 3.0.0, Add Banner Support Fix Android Stencyl 3.5
 
 ## Submitting a Pull Request
 
