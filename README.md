@@ -15,6 +15,9 @@ This Extension Required the Toolset Extension Manager [https://byrobingames.gith
   * Video Support
   * Rewarded Video Support
   * Banner Support
+  
+**GDPR Compliance** <br/>
+UnityAds will automatically present users with an opportunity to opt-out of targeted advertising. See [https://unityads.unity3d.com/help/legal/gdpr](https://unityads.unity3d.com/help/legal/gdpr)
 
 ## How to Install
 
