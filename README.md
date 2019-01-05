@@ -108,7 +108,7 @@ Rewarded ad:<br/>
 <hr/>
 
 
-### Button ExampleSet Consent (for Europe users only)
+### Set Consent (for Europe users only)
 
 ![setconsent](https://byrobingames.github.io/img/unityads/unityadssetconsent.png)<br/>
 This block is optional for UnityAds. <br/>
@@ -136,7 +136,7 @@ If you want to check if a user is in Europe, you can use the **"User is in Conti
 - 2017-03-19 (0.0.9) – Updated to use with Heyzap Extension 2.9, Update SDK to iOS: 2.0.8 Android: 2.0.8, Added Android Gradle support for openfl4
 - 2017-05-16(0.1.0) Update SDK to iOS: 2.1.0 Android: 2.1.0, Tested for Stencyl 3.5, Required byRobin Toolset Extension Manager
 - 2018-12-26(0.1.1) Update SDK to iOS: 3.0.0 Android: 3.0.0, Add Banner Support Fix Android Stencyl 3.5
-- 2019-01-05(0.1.2) Added a set consent block to set the consent programmatically.
+- 2019-01-05(0.1.2) Added a "set consent block" to set the consent programmatically.
 
 ## Submitting a Pull Request
 
