@@ -54,10 +54,11 @@ public class UnityAdsEx extends Extension implements IUnityAdsListener, IUnityBa
     private LinearLayout layout;
 
     private static String appId=null;
+    private static MetaData gdprMetaData=null;
     
-    protected  static boolean showedVideo=false;
-    protected  static boolean showedRewarded=false;
-    private  static boolean bannerLoaded=false;
+    protected static boolean showedVideo=false;
+    protected static boolean showedRewarded=false;
+    private static boolean bannerLoaded=false;
     private static int gravity=Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL;
 
 	//////////////////////////////////////////////////////////////////////////////////////////////////
@@ -237,6 +238,20 @@ public class UnityAdsEx extends Extension implements IUnityAdsListener, IUnityBa
                 }
         });
 
+    }
+
+    static public void setUsersConsent(final boolean isGranted){
+
+        if(gdprMetaData == null){
+                gdprMetaData = new MetaData(mainActivity);
+        }
+
+        if(gdprMetaData.hasData()){
+            gdprMetaData.clearData();
+        }
+
+        gdprMetaData.set("gdpr.consent", isGranted);
+        gdprMetaData.commit();
     }
 
     //////////////////////////////////////////////////////////////////////////////////////////////////

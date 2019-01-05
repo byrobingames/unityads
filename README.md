@@ -19,6 +19,8 @@ This Extension Required the Toolset Extension Manager [https://byrobingames.gith
 **GDPR Compliance** <br/>
 UnityAds will automatically present users with an opportunity to opt-out of targeted advertising. See [https://unityads.unity3d.com/help/legal/gdpr](https://unityads.unity3d.com/help/legal/gdpr)
 
+It is also possible to set the consent programmatically, use the set consent to YES/NO block. (see documentation and block section)
+
 ## How to Install
 
 To install this Engine Extension, go to the toolset (byRobin Extension Mananger) in the Extension menu of your game inside Stencyl.<br/>
@@ -103,6 +105,16 @@ Video ad:<br/>
 Rewarded ad:<br/>
 ![unityadsexamplerewardedbutton](https://byrobingames.github.io/img/unityads/unityadsexamplerewardedbutton.png)
 
+**Set Consent (Europe user only)**<br/>
+![setconsent](https://byrobingames.github.io/img/unityads/unityadssetconsent.png)<br/>
+This block is optional for UnityAds. <br/>
+But if you want to set the consent programmatically you can use this block.<br/>
+YES: Yes, i agree to personalized experience.<br/>
+NO: No, I do not want personalized experience.<br/>
+Go to  [https://unityads.unity3d.com/help/legal/gdpr](https://unityads.unity3d.com/help/legal/gdpr) for more information.<br/>
+
+If you want to check if a user is in Europe, you can use the **"User is in Continetn: Europe"** boolean block from [https://byrobingames.github.io](https://byrobingames.github.io)
+
 ## Version History
 
 - 2016-03-28 (0.0.1) First release
@@ -120,6 +132,7 @@ Rewarded ad:<br/>
 - 2017-03-19 (0.0.9) – Updated to use with Heyzap Extension 2.9, Update SDK to iOS: 2.0.8 Android: 2.0.8, Added Android Gradle support for openfl4
 - 2017-05-16(0.1.0) Update SDK to iOS: 2.1.0 Android: 2.1.0, Tested for Stencyl 3.5, Required byRobin Toolset Extension Manager
 - 2018-12-26(0.1.1) Update SDK to iOS: 3.0.0 Android: 3.0.0, Add Banner Support Fix Android Stencyl 3.5
+- 2019-01-05(0.1.2) Added a set consent block to set the consent programmatically.
 
 ## Submitting a Pull Request
 

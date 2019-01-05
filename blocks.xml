@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <palette>
-    
+
     <block tag="initUnityAds" spec="Initialize UnityAds [c:unityads]" code="UnityAds.init();" type="action" color="charcoal" returns="void">
         <fields>
         </fields>
     </block>
-    
+
     <block tag="showVideoUnityAds" spec="Show UnityAds Video ad with placementID: %0 [c:unityads]" code="UnityAds.showVideo(~);" help="Before you can show set Placement id" type="action" color="charcoal" returns="void">
         <fields>
             <text order="0"></text>
         </fields>
     </block>
-    
+
     <block tag="showRewardedUnityAds" spec="Show UnityAds Rewarded ad with placementID: %0 and Alert title: %1 with message: %2 [c:unityads]" code="UnityAds.showRewarded(~,~,~);" help="Before you can show set Placement id. If Alert title is empty no alert will show." type="action" color="charcoal" returns="void">
         <fields>
             <text order="0"></text>
@@ -19,18 +19,18 @@
             <text order="2"></text>
         </fields>
     </block>
-    
+
     <block tag="showBannerUnityAds" spec="Show UnityAds Banner ad with placementID: %0 [c:unityads]" code="UnityAds.showBanner(~);" help="Before you can show set Placement id" type="action" color="charcoal" returns="void">
         <fields>
             <text order="0"></text>
         </fields>
     </block>
-    
+
     <block tag="hideBannerUnityAds" spec=" Hide UnityAds Banner ad [c:unityads]" code="UnityAds.hideBanner();" help="Hide or destroy banner" type="action" color="charcoal" returns="void">
         <fields>
         </fields>
     </block>
-    
+
     <block tag="moveBannerUnityAds" spec="Move UnityAds Banner ad to: %0 [c:unityads]" code="UnityAds.moveBanner(~);" help="Move banner to bottom or top" type="action" color="charcoal" returns="void">
         <fields>
             <dropdown order="0">
@@ -41,13 +41,29 @@
             </dropdown>
         </fields>
     </block>
-    
+
+    <block tag="setConsentUnityAds" spec="UnityAds set consent to: %0 [c:unityads]" code="UnityAds.setConsent(~);" help="Set users consent programmatically" type="action" color="charcoal" returns="void">
+        <fields>
+            <dropdown order="0">
+                <choices>
+                    <c text="YES" code="true"></c>
+                    <c text="NO" code="false"></c>
+                </choices>
+            </dropdown>
+        </fields>
+    </block>
+
+    <block tag="isSupportdUnityAds" spec="UnityAds is supported on device [c:unityads]" code="UnityAds.isSupported()" help="Check if UnityAds is supported on device" type="normal" color="charcoal" returns="boolean">
+        <fields>
+        </fields>
+    </block>
+
     <block tag="getAdInfoUnityAds" spec="UnityAds canShowAds with placementID: %0 [c:unityads]" code="UnityAds.canShowAds(~)" type="normal" color="charcoal" returns="boolean">
         <fields>
             <text order="0"></text>
         </fields>
     </block>
-    
+
     <block tag="getVideoAdInfoUnityAds" spec="UnityAds Video Ad %0 [c:unityads]" code="UnityAds.~()" type="normal" color="charcoal" returns="boolean">
         <fields>
             <dropdown order="0">
@@ -59,7 +75,7 @@
             </dropdown>
         </fields>
     </block>
-    
+
     <block tag="getRewardedAdInfoUnityAds" spec="UnityAds Rewarded Video Ad %0 [c:unityads]" code="UnityAds.~()" type="normal" color="charcoal" returns="boolean">
         <fields>
             <dropdown order="0">
@@ -70,7 +86,7 @@
             </dropdown>
         </fields>
     </block>
-    
+
     <block tag="getBannerAdInfoUnityAds" spec="UnityAds Banner Ad %0 [c:unityads]" code="UnityAds.~()" type="normal" color="charcoal" returns="boolean">
         <fields>
             <dropdown order="0">
@@ -83,6 +99,6 @@
             </dropdown>
         </fields>
     </block>
-    
-    
+
+
 </palette>

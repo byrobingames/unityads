@@ -75,6 +75,12 @@ static value unityads_banner_destroy(){
 }
 DEFINE_PRIM(unityads_banner_destroy,0);
 
+static value unityads_setconsent(value isGranted){
+    setUnityConsent(val_bool(isGranted));
+    return alloc_null();
+}
+DEFINE_PRIM(unityads_setconsent,1);
+
 #endif
 
 extern "C" void unityads_main () {

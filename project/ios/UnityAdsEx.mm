@@ -10,6 +10,8 @@
 #import <UIKit/UIKit.h>
 #import <UnityAds/UnityAds.h>
 #import <UnityAds/UADSBanner.h>
+#import <UnityAds/UADSMetaData.h>
+
 
 using namespace unityads;
 
@@ -24,6 +26,8 @@ extern "C" void sendUnityAdsEvent(char* event);
     BOOL showedRewarded;
     BOOL bottom;
     BOOL bannerLoaded;
+    
+    UADSMetaData *gdprConsentMetaData;
 }
 
 - (id)initWithID:(NSString*)appID testModeOn:(BOOL)testMode debugModeOn:(BOOL)debugMode;
@@ -35,6 +39,7 @@ extern "C" void sendUnityAdsEvent(char* event);
 - (void)hideBannerAd;
 - (void)setBannerPosition:(NSString*)position;
 - (void)destroyBannerAd;
+- (void)setUsersConsent:(BOOL)isGranted;
 
 @property (nonatomic, assign) BOOL showedVideo;
 @property (nonatomic, assign) BOOL showedRewarded;
@@ -202,7 +207,24 @@ extern "C" void sendUnityAdsEvent(char* event);
         bannerView.frame=frame;
     }
 }
-
+    
+-(void)setUsersConsent:(BOOL)isGranted
+{
+    if(gdprConsentMetaData == NULL)
+    {
+        gdprConsentMetaData = [[UADSMetaData alloc] init];
+    }
+    
+    if([gdprConsentMetaData hasData])
+    {
+        [gdprConsentMetaData clearData];
+    }
+    
+    NSLog(@"UnityAds SetConsent:  %@", @(isGranted));
+    
+    [gdprConsentMetaData set:@"gdpr.consent" value:@(isGranted)];
+    [gdprConsentMetaData commit];
+}
 
 #pragma mark - UnityAdsSDK Delegate
 
@@ -374,4 +396,10 @@ namespace unityads {
     {
         if(unityAdsController != NULL) [unityAdsController destroyBannerAd];
     }
+    
+    void setUnityConsent(bool isGranted)
+    {
+        if(unityAdsController != NULL) [unityAdsController setUsersConsent:(BOOL)isGranted];
+    }
+    
 }

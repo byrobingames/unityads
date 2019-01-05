@@ -54,6 +54,7 @@ class UnityAds {
 	private static var __hideBanner:Void->Void = function(){};
 	private static var __moveBanner:String->Void = function(position:String){};
 	//private static var __destroyBanner:Void->Void = function(){};
+	private static var __setConsent:Bool->Void = function(isGranted:Bool){};
 
 	////////////////////////////////////////////////////////////////////////////
 
@@ -82,6 +83,7 @@ class UnityAds {
 			__hideBanner = cpp.Lib.load("unityads","unityads_banner_hide",0);
 			__moveBanner = cpp.Lib.load("unityads","unityads_banner_move",1);
 			// __destroyBanner = cpp.Lib.load("unityads","unityads_banner_destroy",0);
+			__setConsent = cpp.Lib.load("unityads","unityads_setconsent",1);
 
 			__init(appId,testMode, debugMode);
 			__unityads_set_event_handle(notifyListeners);
@@ -104,7 +106,8 @@ class UnityAds {
 			__hideBanner = JNI.createStaticMethod("com/byrobin/unityads/UnityAdsEx", "hideBanner", "()V");
 			__moveBanner = JNI.createStaticMethod("com/byrobin/unityads/UnityAdsEx", "moveBanner", "(Ljava/lang/String;)V");
 			// __destroyBanner = JNI.createStaticMethod("com/byrobin/unityads/UnityAdsEx", "﻿destroyBanner", "()V");
-			
+			__setConsent = JNI.createStaticMethod("com/byrobin/unityads/UnityAdsEx", "setUsersConsent", "(Z)V");
+
 			if(__init == null)
 			{
 				__init = JNI.createStaticMethod("com/byrobin/unityads/UnityAdsEx", "init", "(Lorg/haxe/lime/HaxeObject;Ljava/lang/String;ZZ)V", true);
@@ -179,6 +182,14 @@ class UnityAds {
 			trace("DestroyBanner Exception: "+e);
 		}
 	}*/
+
+	public static function setConsent(isGranted:Bool) {
+		try {
+			__setConsent(isGranted);
+		} catch(e:Dynamic) {
+			trace("SetConsent Exception: "+e);
+		}
+	}
 
 	////callbacks funtions
 	public static function adIsFetch():Bool{
