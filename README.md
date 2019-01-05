@@ -105,7 +105,11 @@ Video ad:<br/>
 Rewarded ad:<br/>
 ![unityadsexamplerewardedbutton](https://byrobingames.github.io/img/unityads/unityadsexamplerewardedbutton.png)
 
-**Set Consent (Europe user only)**<br/>
+<hr/>
+
+
+### Button ExampleSet Consent (for Europe users only)
+
 ![setconsent](https://byrobingames.github.io/img/unityads/unityadssetconsent.png)<br/>
 This block is optional for UnityAds. <br/>
 But if you want to set the consent programmatically you can use this block.<br/>
