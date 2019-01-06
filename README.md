@@ -111,7 +111,7 @@ Rewarded ad:<br/>
 ### Set Consent (for Europe users only)
 
 ![setconsent](https://byrobingames.github.io/img/unityads/unityadssetconsent.png)<br/>
-This block is optional for UnityAds. <br/>
+This block is optional for UnityAds. Use this block after you initialized UnityAds<br/>
 But if you want to set the consent programmatically you can use this block.<br/>
 YES: Yes, i agree to personalized experience.<br/>
 NO: No, I do not want personalized experience.<br/>
