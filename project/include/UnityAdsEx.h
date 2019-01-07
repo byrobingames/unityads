@@ -15,6 +15,7 @@ namespace unityads {
     void moveBanner(const char *__position);
     void destroyBanner();
     void setUnityConsent(bool isGranted);
+    bool getUnityConsent();
 }
 
 

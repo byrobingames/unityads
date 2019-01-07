@@ -108,14 +108,19 @@ Rewarded ad:<br/>
 <hr/>
 
 
-### Set Consent (for Europe users only)
+### Set/Get Consent value (for Europe users only)
 
+**Set Consent** <br/>
 ![setconsent](https://byrobingames.github.io/img/unityads/unityadssetconsent.png)<br/>
-This block is optional for UnityAds. Use this block after you initialized UnityAds<br/>
+This block is optional for UnityAds.<br/>
 But if you want to set the consent programmatically you can use this block.<br/>
 YES: Yes, i agree to personalized experience.<br/>
 NO: No, I do not want personalized experience.<br/>
 Go to  [https://unityads.unity3d.com/help/legal/gdpr](https://unityads.unity3d.com/help/legal/gdpr) for more information.<br/>
+
+**Get Consent** <br/>
+![setconsent](https://byrobingames.github.io/img/unityads/unityadsgetconsented.png)<br/>
+Return true(YES) if consent is set to YES and return false(NO) when consent is set to NO.
 
 If you want to check if a user is in Europe, you can use the **"User is in Continetn: Europe"** boolean block from [https://byrobingames.github.io](https://byrobingames.github.io)
 
@@ -137,6 +142,7 @@ If you want to check if a user is in Europe, you can use the **"User is in Conti
 - 2017-05-16(0.1.0) Update SDK to iOS: 2.1.0 Android: 2.1.0, Tested for Stencyl 3.5, Required byRobin Toolset Extension Manager
 - 2018-12-26(0.1.1) Update SDK to iOS: 3.0.0 Android: 3.0.0, Add Banner Support Fix Android Stencyl 3.5
 - 2019-01-05(0.1.2) Added a "set consent block" to set the consent programmatically.
+- 2019-01-07(0.1.3) Added a "get consent block" to get the consent programmatically.
 
 ## Submitting a Pull Request
 

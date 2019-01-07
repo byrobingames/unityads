@@ -12,6 +12,7 @@ import android.app.Activity;
 import android.app.*;
 import android.content.*;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.*;
 import android.util.Log;
 import android.content.ActivityNotFoundException;
@@ -252,6 +253,33 @@ public class UnityAdsEx extends Extension implements IUnityAdsListener, IUnityBa
 
         gdprMetaData.set("gdpr.consent", isGranted);
         gdprMetaData.commit();
+
+        SharedPreferences.Editor editor = mainActivity.getPreferences(Context.MODE_PRIVATE).edit();
+        if(editor == null) {
+                Log.d("UnityAdsEx", "UnityAdsEx Failed to write user consent to preferences");
+                return;
+        }
+
+        editor.putBoolean("gdpr_consent_unityads", isGranted);
+        boolean committed = editor.commit();
+
+        if(!committed) {
+                Log.d("UnityAdsEx", "UnityAdsEx Failed to write user consent to preferences");
+        }
+    }
+
+    public static boolean getUsersConsent(){
+
+        SharedPreferences prefs = mainActivity.getPreferences(Context.MODE_PRIVATE);
+        if(prefs == null) {
+                Log.i("UnityAdsEx", "UnityAdsEx Failed to read user conent preference data");
+        }
+
+        final Boolean isGranted = prefs.getBoolean("gdpr_consent_unityads", false);
+
+        Log.d("UnityAdsEx","UnityAdsEx get userConsent is: " + isGranted);
+
+        return isGranted;
     }
 
     //////////////////////////////////////////////////////////////////////////////////////////////////

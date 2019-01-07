@@ -27,7 +27,7 @@ extern "C" void sendUnityAdsEvent(char* event);
     BOOL bottom;
     BOOL bannerLoaded;
     
-    UADSMetaData *gdprConsentMetaData;
+    //UADSMetaData *gdprConsentMetaData;
 }
 
 - (id)initWithID:(NSString*)appID testModeOn:(BOOL)testMode debugModeOn:(BOOL)debugMode;
@@ -39,7 +39,7 @@ extern "C" void sendUnityAdsEvent(char* event);
 - (void)hideBannerAd;
 - (void)setBannerPosition:(NSString*)position;
 - (void)destroyBannerAd;
-- (void)setUsersConsent:(BOOL)isGranted;
+//- (void)setUsersConsent:(BOOL)isGranted;
 
 @property (nonatomic, assign) BOOL showedVideo;
 @property (nonatomic, assign) BOOL showedRewarded;
@@ -208,7 +208,7 @@ extern "C" void sendUnityAdsEvent(char* event);
     }
 }
     
--(void)setUsersConsent:(BOOL)isGranted
+/*-(void)setUsersConsent:(BOOL)isGranted
 {
     if(gdprConsentMetaData == NULL)
     {
@@ -224,7 +224,7 @@ extern "C" void sendUnityAdsEvent(char* event);
     
     [gdprConsentMetaData set:@"gdpr.consent" value:@(isGranted)];
     [gdprConsentMetaData commit];
-}
+}*/
 
 #pragma mark - UnityAdsSDK Delegate
 
@@ -328,6 +328,7 @@ extern "C" void sendUnityAdsEvent(char* event);
 namespace unityads {
 	
 	static UnityAdsController *unityAdsController;
+    UADSMetaData *gdprConsentMetaData;
     
 	void init(const char *__appID, bool testMode, bool debugMode){
         
@@ -399,7 +400,28 @@ namespace unityads {
     
     void setUnityConsent(bool isGranted)
     {
-        if(unityAdsController != NULL) [unityAdsController setUsersConsent:(BOOL)isGranted];
+        if(gdprConsentMetaData == NULL)
+        {
+            gdprConsentMetaData = [[UADSMetaData alloc] init];
+        }
+        
+        if([gdprConsentMetaData hasData])
+        {
+            [gdprConsentMetaData clearData];
+        }
+        
+        [gdprConsentMetaData set:@"gdpr.consent" value:@(isGranted)];
+        [gdprConsentMetaData commit];
+        
+        [[NSUserDefaults standardUserDefaults] setBool:isGranted forKey:@"gdpr_consent_unityads"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        
+        NSLog(@"UnityAds SetConsent:  %@", @(isGranted));
+    }
+    
+    bool getUnityConsent()
+    {
+        return [[NSUserDefaults standardUserDefaults] boolForKey:@"gdpr_consent_unityads"];
     }
     
 }

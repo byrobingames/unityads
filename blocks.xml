@@ -53,6 +53,11 @@
         </fields>
     </block>
 
+    <block tag="getConsentUnityAds" spec="UnityAds get consented [c:unityads]" code="UnityAds.getConsent()" help="Retruns true(YES) when consent is set to YES and returns false(NO) when consent is set to NO" type="normal" color="charcoal" returns="boolean">
+        <fields>
+        </fields>
+    </block>
+
     <block tag="isSupportdUnityAds" spec="UnityAds is supported on device [c:unityads]" code="UnityAds.isSupported()" help="Check if UnityAds is supported on device" type="normal" color="charcoal" returns="boolean">
         <fields>
         </fields>

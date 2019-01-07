@@ -81,6 +81,11 @@ static value unityads_setconsent(value isGranted){
 }
 DEFINE_PRIM(unityads_setconsent,1);
 
+static value unityads_getconsent(){
+    return alloc_bool(getUnityConsent());
+}
+DEFINE_PRIM(unityads_getconsent,0);
+
 #endif
 
 extern "C" void unityads_main () {
