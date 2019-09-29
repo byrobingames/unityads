@@ -143,6 +143,7 @@ If you want to check if a user is in Europe, you can use the **"User is in Conti
 - 2018-12-26(0.1.1) Update SDK to iOS: 3.0.0 Android: 3.0.0, Add Banner Support Fix Android Stencyl 3.5
 - 2019-01-05(0.1.2) Added a "set consent block" to set the consent programmatically.
 - 2019-01-07(0.1.3) Added a "get consent block" to get the consent programmatically.
+- 2019-09-29(0.1.4) Update SDK to iOS: 3.2.0 Android: 3.2.0, Android fix issue READ_PHONE_STATE
 
 ## Submitting a Pull Request
 

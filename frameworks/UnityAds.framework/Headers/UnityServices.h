@@ -14,16 +14,6 @@ typedef NS_ENUM(NSInteger, UnityServicesError) {
 
 - (instancetype)init NS_UNAVAILABLE;
 + (instancetype)initialize NS_UNAVAILABLE;
-
-/**
- *  Initializes UnityAds. UnityAds should be initialized when app starts.
- *
- *  @param gameId   Unique identifier for a game, given by Unity Ads admin tools or Unity editor.
- *  @param delegate delegate for UnityAdsDelegate callbacks
- */
-+ (void)initialize:(NSString *)gameId
-          delegate:(nullable id<UnityServicesDelegate>)delegate;
-
 /**
  *  Initializes UnityAds. UnityAds should be initialized when app starts.
  *
@@ -33,7 +23,8 @@ typedef NS_ENUM(NSInteger, UnityServicesError) {
  */
 + (void)initialize:(NSString *)gameId
           delegate:(nullable id<UnityServicesDelegate>)delegate
-          testMode:(BOOL)testMode;
+          testMode:(BOOL)testMode
+          usePerPlacementLoad:(BOOL)usePerPlacementLoad;
 
 /**
  *  Get the current debug status of `UnityAds`.

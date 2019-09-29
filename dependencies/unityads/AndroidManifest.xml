@@ -5,6 +5,10 @@
     android:versionCode="::APP_BUILD_NUMBER::"
     android:versionName="::APP_VERSION::"
     android:installLocation="::ANDROID_INSTALL_LOCATION::">
+    
+    <uses-sdk
+    android:minSdkVersion="9"
+    android:targetSdkVersion="26" />
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />

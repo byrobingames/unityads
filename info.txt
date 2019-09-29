@@ -1,7 +1,7 @@
-name=UnityaAds v0.1.3 (byRobin)
+name=UnityaAds v0.1.4 (byRobin)
 description=Implements UnityAds for iOS and Android.
 author=Robin Schaafsma
 website=http://www.byrobingames.com
-version=0.1.3
+version=0.1.4
 compatibility=mobile
 dependencies=toolset-com.byrobingames.manager-0.0.1
